@@ -31,3 +31,6 @@ coverage
 
 test-results/
 playwright-report/
+
+# Auto-generated types
+components.d.ts
