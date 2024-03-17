@@ -12,12 +12,13 @@ app.use(router)
 
 // User Interface System
 import PrimeVue from "primevue/config"
-import "@/assets/style/global.css"
+import "@/assets/styles/global.css"
 // @ts-ignore
-import Lara from "@/assets/style/theme/primevue-presets/lara"
+import Lara from "@/assets/styles/theme/primevue-presets/lara"
 app.use(PrimeVue, {
     unstyled: true,
-    pt: Lara
+    pt: Lara,
+    ripple: true
 })
 
 // Mount the Vue application to DOM...
