@@ -29,8 +29,10 @@ coverage
 
 *.tsbuildinfo
 
+# Reports
 test-results/
 playwright-report/
+.unlighthouse/
 
 # Auto-generated types
 components.d.ts
