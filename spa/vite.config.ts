@@ -14,6 +14,9 @@ import {PrimeVueResolver} from 'unplugin-vue-components/resolvers';
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 
+// Content loaders - SVG
+import svgLoader from 'vite-svg-loader'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -35,6 +38,7 @@ export default defineConfig({
         VueRouterAutoImports,
       ]
     }),
+    svgLoader()
   ],
   resolve: {
     alias: {

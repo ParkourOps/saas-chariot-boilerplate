@@ -7,10 +7,7 @@ import { createPinia } from "pinia"
 app.use(createPinia())
 
 // Router
-import { createRouter, createWebHistory } from "vue-router/auto"
-const router = createRouter({
-    history: createWebHistory()
-})
+import router from "./router"
 app.use(router)
 
 // User Interface System
