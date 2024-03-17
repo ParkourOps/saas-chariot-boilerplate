@@ -10,17 +10,17 @@
 
 /* Theme Colours */
 :root {
-    --primary-50: 236 253 245;
-    --primary-100: 209 250 229;
-    --primary-200: 167 243 208;
-    --primary-300: 110 231 183;
-    --primary-400: 52 211 153;
-    --primary-500: 16 185 129;
-    --primary-600: 5 150 105;
-    --primary-700: 4 120 87;
-    --primary-800: 6 95 70;
-    --primary-900: 4 78 56;
-    --primary-950: 2 44 34;
+    --primary-50: 237 245 249;
+    --primary-100: 202 225 238;
+    --primary-200: 167 205 227;
+    --primary-300: 131 185 216;
+    --primary-400: 96 165 205;
+    --primary-500: 61 145 194;
+    --primary-600: 50 119 159;
+    --primary-700: 39 92 124;
+    --primary-800: 28 66 88;
+    --primary-900: 17 39 53;
+    --primary-950: 6 13 18;
     --surface-0: 255 255 255;
     --surface-50: 248 250 252;
     --surface-100: 241 245 249;
