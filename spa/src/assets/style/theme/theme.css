@@ -35,6 +35,7 @@
     --surface-950: 3 6 23;
 }
 
+/* Apply Tailwind CSS classes */
 body {
     @apply font-sans;
     
