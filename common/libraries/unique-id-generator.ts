@@ -1,10 +1,10 @@
 import {v4 as uuidv4} from "uuid";
 
 class UniqueIdGenerator<
-    TPrefix extends string | undefined
+    TPrefix extends string | null
 > {
-    private prefix;
-    constructor(prefix?: TPrefix) {
+    private prefix : TPrefix;
+    constructor(prefix: TPrefix) {
         this.prefix = prefix;
     }
     generate() : string {
