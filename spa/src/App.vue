@@ -7,5 +7,7 @@ const route = useRoute();
     <TheTopBar v-show="route.meta.showTopBar" />
     
     <RouterView />
+
+    <MandatoryComponents />
 </template>
 

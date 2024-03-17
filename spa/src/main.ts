@@ -11,15 +11,8 @@ import router from "./router"
 app.use(router)
 
 // User Interface System
-import PrimeVue from "primevue/config"
-import "@/assets/styles/global.css"
-// @ts-ignore
-import Lara from "@/assets/styles/theme/primevue-presets/lara"
-app.use(PrimeVue, {
-    unstyled: true,
-    pt: Lara,
-    ripple: true
-})
+import userInterface from "./framework/libraries/user-interface"
+app.use(userInterface)
 
 // Mount the Vue application to DOM...
 app.mount("#app")
