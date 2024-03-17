@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "Sometype Mono";
+    src: url("./static/SometypeMono-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Sometype Mono";
+    src: url("./static/SometypeMono-Medium.ttf") format("truetype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Sometype Mono";
+    src: url("./static/SometypeMono-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Sometype Mono";
+    src: url("./static/SometypeMono-Bold.ttf") format("truetype");
+    font-weight: 700;
+}

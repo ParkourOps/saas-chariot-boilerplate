@@ -15,9 +15,9 @@ app.use(router)
 
 // User Interface System
 import PrimeVue from "primevue/config"
-import "@/assets/style/style.css"
+import "@/assets/style/global.css"
 // @ts-ignore
-import Lara from "@/assets/style/primevue-presets/lara"
+import Lara from "@/assets/style/theme/primevue-presets/lara"
 app.use(PrimeVue, {
     unstyled: true,
     pt: Lara

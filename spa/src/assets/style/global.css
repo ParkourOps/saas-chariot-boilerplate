@@ -1,0 +1,33 @@
+@import url("./theme/theme");
+
+/* Definition of classes independent of Tailwind CSS: */
+.no-select {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.no-drag {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+.smallcaps {
+    font-variant: small-caps;
+}
+
+:root * {
+    * {
+        /* Disable select and drag by default for cleaner look and feel. */
+        @extend .no-select;
+        @extend .no-drag;
+    }
+}
+
+body {
+    /* always show vertical scrollbar to prevent content movement. */
+    overflow-y: scroll;
+}

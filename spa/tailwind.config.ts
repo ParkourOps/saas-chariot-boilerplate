@@ -14,27 +14,27 @@ export default {
           the rest will be used in the case of redundancy:
           - https://tailwindcss.com/docs/font-family#customizing-the-default-font
 
-          Theme fonts are imported in @/assets/style.css
+          Theme fonts are imported in @/assets/style/theme/theme.css
         */
         fontFamily: {
           sans: [
               "Lato",
               ...defaultTheme.fontFamily.sans,
           ],
-          // serif: [
-          //     "Merriweather",
-          //     ...defaultTheme.fontFamily.serif,
-          // ],
-          // mono: [
-          //     "Sometype Mono",
-          //     ...defaultTheme.fontFamily.mono,
-          // ],
+          serif: [
+              "Merriweather",
+              ...defaultTheme.fontFamily.serif,
+          ],
+          mono: [
+              "Sometype Mono",
+              ...defaultTheme.fontFamily.mono,
+          ],
     },
     extend: {
       /* 
         Theme Colours:
 
-        Theme colours are mapped to @/assets/style.css
+        Theme colours are mapped to @/assets/style/theme/theme.css
       */
       colors: {
         'primary-50': 'rgb(var(--primary-50))',
