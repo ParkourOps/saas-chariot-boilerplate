@@ -9,7 +9,7 @@
         name: T,
     }>();
 
-    const component = defineAsyncComponent(() => import(`@/assets/svg/${props.name}.svg`));
+    const component = defineAsyncComponent(() => import(`@/assets/images/svg/${props.name}.svg`));
   </script>
 
 <template>
