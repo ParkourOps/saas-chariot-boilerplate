@@ -2,6 +2,9 @@
 import Validator from '@/common/libraries/validator';
 import { computed, watch } from 'vue';
 import type { ZodString } from 'zod';
+    defineOptions({
+        inheritAttrs: false
+    });
 
     const props = defineProps<{
         name: string,

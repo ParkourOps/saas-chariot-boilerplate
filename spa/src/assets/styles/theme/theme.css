@@ -36,14 +36,20 @@
 }
 
 /* Apply Tailwind CSS classes */
-body {
-    @apply font-sans;
+:root * {
+    * {
+        @apply font-sans;
     
-    h1, h2, h3 {
-        @apply font-serif;
-    }
+        h1, h2, h3 {
+            @apply font-serif;
+        }
+    
+        p {
+            @apply font-mono;
+        }
 
-    p {
-        @apply font-mono;
+        svg {
+            @apply fill-surface-700 dark:fill-surface-0;
+        }
     }
 }
