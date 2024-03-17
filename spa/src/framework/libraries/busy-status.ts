@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import UniqueIdGenerator from "@/common/libraries/unique-id-generator"
+import UniqueIdGenerator from "@/_common_/libraries/unique-id-generator"
 
 type PendingAction = {
     id: string
 }
 
-const uniqueIdGenerator = new UniqueIdGenerator();
+const uniqueIdGenerator = new UniqueIdGenerator("action");
 
 const useBusyStatus = defineStore("Busy", ()=>{
     const pendingActions = ref<Array<PendingAction>>([]);

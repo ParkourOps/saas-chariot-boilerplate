@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Validator from '@/common/libraries/validator';
+import Validator from '@/_common_/libraries/validator';
 import { computed, watch } from 'vue';
 import type { ZodString } from 'zod';
     defineOptions({
