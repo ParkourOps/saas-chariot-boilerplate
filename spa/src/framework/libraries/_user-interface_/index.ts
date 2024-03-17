@@ -28,3 +28,9 @@ export default {
         console.debug("User interface installed.");
     }
 }
+
+declare module "vue" {
+    interface GlobalComponents {
+        MandatoryComponents: typeof MandatoryComponents;
+    }
+}
