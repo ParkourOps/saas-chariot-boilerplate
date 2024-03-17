@@ -11,8 +11,13 @@ app.use(router)
 
 // User Interface System
 import PrimeVue from 'primevue/config'
-import 'primevue/resources/themes/aura-light-amber/theme.css'
-app.use(PrimeVue)
+import "@/assets/style/style.css"
+// @ts-ignore
+import Lara from '@/assets/style/primevue-presets/lara' 
+app.use(PrimeVue, {
+    unstyled: true,
+    pt: Lara
+})
 
 // Mount the Vue application to DOM...
 app.mount('#app')
