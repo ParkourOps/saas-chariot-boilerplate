@@ -1,20 +1,16 @@
 import {v4 as uuidv4} from "uuid";
 
-class UniqueIdGenerator<
-    TPrefix extends string | null
+class UniqueIDGenerator<
+    Prefix extends string
 > {
-    private prefix : TPrefix;
-    constructor(prefix: TPrefix) {
+    private prefix : Prefix;
+    constructor(prefix: Prefix) {
         this.prefix = prefix;
     }
-    generate() : string {
+    generate() {
         const uuid = uuidv4();
-        if (this.prefix) {
-            return `${this.prefix}:${uuid}`;
-        } else {
-            return uuid;
-        }
+        return `${this.prefix as Prefix}:${uuid}` as `${Prefix}:${string}`;
     }
 }
 
-export default UniqueIdGenerator;
+export default UniqueIDGenerator;
