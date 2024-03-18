@@ -77,9 +77,9 @@ export const Time = z.object({
 export const DateTime = Date.merge(Time);
 
 /*
-* one lowercase letter: a-z
-* one uppercase letter: A-Z
-* one digit: 0-9
-* one symbol: ^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , > < ' : ; | _ ~ `
+    * one lowercase letter: a-z
+    * one uppercase letter: A-Z
+    * one digit: 0-9
+    * one symbol: ^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , > < ' : ; | _ ~ `
 */
 export const Password = z.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{6,4096}$/);
