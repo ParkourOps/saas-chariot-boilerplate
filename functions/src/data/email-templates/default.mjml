@@ -1,0 +1,55 @@
+<mjml>
+  <mj-body background-color="#ECE6DF">
+    <!-- Company Header -->
+    <mj-section>
+      <mj-column>
+        <mj-image src="https://firebasestorage.googleapis.com/v0/b/saas-chariot.appspot.com/o/email-assets%2Fimages%2Flogo.png?alt=media" width="250px" href="{{ appLink }}" />
+      </mj-column>
+    </mj-section>
+    <!-- Title Header -->
+    <mj-section background-color="#F26419">
+      <mj-column>
+        {{#if title}}
+          <mj-text align="center" color="#153243" font-size="20px" font-weight="bold">
+            {{ title }}
+          </mj-text>
+        {{/if}}
+      </mj-column>
+    </mj-section>
+    <!-- Content-->
+    <mj-section background-color="#F5F8FF">
+      <mj-column>
+        {{#if heading}}
+          <mj-text font-size="20px" line-height="150%" color="#153243" align="center">
+            {{ heading }}
+          </mj-text>
+        {{/if}}
+        {{#each paragraphs}}
+          <mj-text font-size="16px" line-height="160%" align="center">
+            {{ this }}
+          </mj-text>
+        {{/each}}
+        {{#if ctaText }}
+          {{#if ctaLink}}
+            <mj-button inner-padding="20px" font-size="15px" background-color="#153243" href="{{ ctaLink }}">
+                {{ ctaText }}
+            </mj-button>
+            {{#if ctaCaption}}
+              <mj-text font-size="12px" align="center">
+                {{ ctaCaption }}
+              </mj-text>
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      </mj-column>
+    </mj-section>
+    <!-- Footer -->
+    <mj-section>
+      <mj-column padding-top="20px">
+        <mj-text align="center" color="#2D6286" font-size="13px">
+          Thank you for choosing <strong>{{ appName }}</strong>.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
