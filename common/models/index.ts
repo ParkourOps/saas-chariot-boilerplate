@@ -11,8 +11,8 @@ export const NonNegativeDecimal = Decimal.gte(0);
 
 export const NonEmptyString = z.string().min(1);
 
-export const Colour = NonEmptyString.regex(/^#(?:[0-9a-fA-F]{3}){1,2}$/);
-export const AlphaColour = NonEmptyString.regex(/^#(?:[0-9a-fA-F]{3,4}){1,2}$/);
+export const Color = NonEmptyString.regex(/^#(?:[0-9a-fA-F]{3}){1,2}$/);
+export const AlphaColor = NonEmptyString.regex(/^#(?:[0-9a-fA-F]{3,4}){1,2}$/);
 
 export const URL = z.string().url();
 export const UUID = z.string().uuid();
@@ -65,13 +65,13 @@ export const TimeZone = _TimeZone_;
 export const Date = z.object({
     dayOfMonth: NonNegativeInteger.gte(1).lte(31),
     month: NonNegativeInteger.gte(1).lte(12),
-    year: NonNegativeInteger,
+    year: NonNegativeInteger.gte(0),
     timeZone: TimeZone,
 });
 export const Time = z.object({
-    hours: NonNegativeInteger.lte(23),
-    minutes: NonNegativeInteger.lte(59),
-    seconds: NonNegativeInteger.lte(59),
+    hours: NonNegativeInteger.gte(0).lte(23),
+    minutes: NonNegativeInteger.gte(0).lte(59),
+    seconds: NonNegativeInteger.gte(0).lte(59),
     timeZone: TimeZone,
 });
 export const DateTime = Date.merge(Time);
