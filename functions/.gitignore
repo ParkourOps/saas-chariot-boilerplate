@@ -8,4 +8,8 @@ typings/
 # Node.js dependency directory
 node_modules/
 
+# Built
+lib/
+
+# Server credentials
 service-account:*.json
