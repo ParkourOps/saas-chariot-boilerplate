@@ -70,6 +70,10 @@ export default function<
         >(async (request) => {
             const generator = new UniqueIDGenerator(prefix);
             const correlationId = generator.generate();
+            const loggableRequest = (r: typeof request) => ({
+                auth: request.auth,
+                data: request.data
+            });
             try {
                 // check if authorised
                 if (
@@ -82,7 +86,7 @@ export default function<
                         "unauthenticated",
                         "Only authorised users with a verified email address can make this request.",
                         {
-                            request
+                            request: loggableRequest(request)
                         }
                     );
                 }
@@ -95,7 +99,7 @@ export default function<
                         "invalid-argument",
                         "Request is invalid. Could not parse request data.",
                         {
-                            request,
+                            request: loggableRequest(request),
                             parseErrors: requestParseResult.error.errors,
                         }
                     )
