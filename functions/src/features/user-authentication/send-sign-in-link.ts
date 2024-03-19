@@ -19,7 +19,7 @@ export default apiEndpointFactory.createAPIEndpoint(SendSignInLink)(async (reque
             request.correlationId,
             e, 
             "internal", 
-            "Could not get sign-in link.",
+            "Could not get sign in link",
             {
                 request
             }
