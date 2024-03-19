@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Validator from '@/_common_/libraries/validator';
+import Validator from '@/_common_/libraries/data-validator';
 import { computed, watch } from 'vue';
 import type { ZodString } from 'zod';
     defineOptions({
@@ -48,7 +48,7 @@ import type { ZodString } from 'zod';
     const validator = new Validator(props.schema);
     const valid = defineModel<boolean>("valid");
     watch(model, (val)=>{
-        valid.value = validator.isValid(val);
+        valid.value = validator.checkValidity(val);
     });
 </script>
 
