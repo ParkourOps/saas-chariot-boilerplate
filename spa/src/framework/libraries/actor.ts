@@ -1,25 +1,42 @@
 import useBusyStatus from "./busy-status";
+import logger from "./logger";
 
 export type ActionFn = ((()=>void) | (()=>Promise<void>));
 export type ActionArg = ActionFn | ActionFn[];
 
-class Actor {
-    private static async _act(action?: ActionArg) {
-        if (!action) return;
-        const busyStatus = useBusyStatus();
-        const token = busyStatus.registerPendingAction();
-        if (Array.isArray(action)) {
-            for (const p of action) {
+async function _act(action?: ActionArg) {
+    if (!action) {
+        console.debug("No action specified.");
+        return;
+    };
+    const busyStatus = useBusyStatus();
+    const token = busyStatus.registerPendingAction();
+    if (Array.isArray(action)) {
+        for (const p of action) {
+            try {
                 await p();
+            } catch (e) {
+                if (e instanceof Error) {
+                    logger.error(e);
+                }
             }
-        } else {
-            await action();
         }
-        token.unregisterPendingAction();
+    } else {
+        try {
+            await action();
+        } catch (e) {
+            if (e instanceof Error) {
+                logger.error(e);
+            }
+        }
     }
-    static act(action?: ActionArg) {
-        return () => this._act(action);
-    }
+    token.unregisterPendingAction();
 }
 
-export default Actor;
+function act(action?: ActionArg) {
+    return () => _act(action);
+}
+
+export default {
+    act
+};
