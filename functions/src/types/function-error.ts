@@ -1,8 +1,9 @@
 import UniqueIDGenerator from "@/_common_/libraries/unique-id-generator";
-import { CorrelationID, ErrorCode, ErrorDetails, ErrorMessage, FunctionError as IFunctionError } from "@/types";
+import { CorrelationID, ErrorCode, FunctionError as IFunctionError } from "@/types";
 import { HttpsError } from "firebase-functions/v2/https";
 import express from "express";
 import logger from "../libraries/logger";
+import { LogDetails, LogMessage } from "@/_common_/types/loggable";
 
 class FunctionError<
     Prefix extends string
@@ -11,31 +12,31 @@ class FunctionError<
     readonly createdAt;
     readonly id;
     readonly correlationID;
-    readonly data;
+    readonly code;
+    readonly message;
+    readonly details;
 
     private constructor(
         prefix: Prefix,
         correlationID: CorrelationID<Prefix>,
         code: ErrorCode,
-        message: ErrorMessage,
-        details: ErrorDetails
+        message: LogMessage,
+        details: LogDetails
     ) {
-        this.type = `error:fncs:${prefix}` as const;
+        this.type = `error@fncs:${prefix}` as const;
         const errorIDGenerator = new UniqueIDGenerator(this.type);
         this.id = errorIDGenerator.generate();
         this.correlationID = correlationID;
-        this.data = {
-            code,
-            message,
-            details,
-        };
+        this.code = code;
+        this.message = message;
+        this.details = details;
         this.createdAt = (new Date()).getTime();
     }
 
     toHTTPErrorResponse() : HttpsError {
-        const message = `[${this.correlationID} => ${this.id} => ${this.data.code}]: An error occurred. See log for details.`;
+        const message = `[${this.correlationID} => ${this.id} => ${this.code}]: An error occurred. See log for details.`;
         return new HttpsError(
-            this.data.code,
+            this.code,
             message,
         );
     }
@@ -56,8 +57,8 @@ class FunctionError<
         prefix: Prefix,
         correlationID: CorrelationID<Prefix>,
         code: ErrorCode,
-        message: ErrorMessage,
-        details?: ErrorDetails        
+        message: LogMessage,
+        details?: LogDetails
     ) {
         return new FunctionError(prefix, correlationID, code, message, details ?? {});
     }
@@ -67,8 +68,8 @@ class FunctionError<
         correlationID: CorrelationID<Prefix>,
         e: unknown,
         code: ErrorCode,
-        messagePrepend?: ErrorMessage,
-        details?: ErrorDetails            
+        messagePrepend?: LogMessage,
+        details?: LogDetails
     ) {
         return this.create(
             prefix,

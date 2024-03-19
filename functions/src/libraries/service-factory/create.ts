@@ -1,19 +1,6 @@
 import { CorrelationID } from "@/types";
 import ServiceFunctionError from "./service-function-error";
-
-// type ServiceFunctionReturn<
-//     ServiceName extends string,
-//     ServiceDescription extends string,
-//     ServiceFunctionReturnData
-// > = {
-//         success: false,
-//         error: ServiceFunctionError<ServiceName, ServiceDescription>
-//     } |
-//     {
-//         success: true,
-//         data: 
-//     }
-// ;
+import FunctionError from "@/types/function-error";
 
 export type ServiceFunction<
     ServiceName extends string,
@@ -67,7 +54,7 @@ export default function<
                         {provider, name, description}, correlationId, ...args
                     );
                 } catch (e) {
-                    if (e instanceof ServiceFunctionError) {
+                    if (e instanceof FunctionError) {
                         throw e;
                     } else {
                         throw ServiceFunctionError.createFromException(

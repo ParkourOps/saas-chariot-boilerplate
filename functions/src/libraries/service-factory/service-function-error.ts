@@ -1,10 +1,11 @@
-import { CorrelationID, ErrorCode, ErrorDetails, ErrorMessage } from "@/types";
+import { LogDetails, LogMessage } from "@/_common_/types/loggable";
+import { CorrelationID, ErrorCode } from "@/types";
 import FunctionError from "@/types/function-error";
 
 type ServiceFunctionErrorDetails<
     ServiceName extends string,
     ServiceDescription extends string,
-> = ErrorDetails & {
+> = {
     service: {
         name: ServiceName,
         description: ServiceDescription,
@@ -20,11 +21,11 @@ export default class ServiceFunctionError {
         serviceDescription: ServiceDescription,
         correlationID: CorrelationID<any>,
         code: ErrorCode,
-        message: ErrorMessage,
-        details?: ErrorDetails
+        message: LogMessage,
+        details?: LogDetails,
     ) {
         return FunctionError.create(
-            `service:${serviceName}`,
+            `service:'${serviceName}'`,
             correlationID,
             code,
             message,
@@ -47,8 +48,8 @@ export default class ServiceFunctionError {
         correlationID: CorrelationID<any>,
         e: unknown,
         code: ErrorCode,
-        messagePrepend?: ErrorMessage,
-        details?: ErrorDetails
+        messagePrepend?: LogMessage,
+        details?: LogDetails
     ) {
         return this.create(
             serviceName,

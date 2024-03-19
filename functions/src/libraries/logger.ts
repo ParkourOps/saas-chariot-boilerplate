@@ -7,7 +7,7 @@ const logtail = new Logtail(configuration.functions.services.betterstack.sourceT
 const logger = {
     debug<Prefix extends string>(debugObj: FunctionDebug<Prefix>) {
         // const message = `[${debugObj.correlationID} => ${debugObj.id}]: ${debugObj.data.message}`;
-        const message = debugObj.data.message;
+        const message = debugObj.message;
         _debug(message, debugObj);
         logtail.debug(message, debugObj);
         logtail.flush();
@@ -15,7 +15,7 @@ const logger = {
 
     error<Prefix extends string>(errorObj: FunctionError<Prefix>) {
         // const message = `[${errorObj.correlationID} => ${errorObj.id} => ${errorObj.data.code}]: ${errorObj.data.message}`;
-        const message = errorObj.data.message;
+        const message = errorObj.message;
         _error(message, errorObj);
         logtail.error(message, errorObj);
         logtail.flush();
