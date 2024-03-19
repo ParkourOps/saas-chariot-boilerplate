@@ -1,7 +1,6 @@
-import { onAuthStateChanged, signOut as _signOut, type User } from "firebase/auth";
 import localStoreSignInEmail from "./localStoreSignInEmail";
 import signInWithLink from "./sign-in-with-link"
-import auth from "@/framework/libraries/_firebase_/auth";
+import auth, {onAuthStateChanged, signOut as _signOut, type User} from "@/framework/libraries/_firebase_/auth";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
