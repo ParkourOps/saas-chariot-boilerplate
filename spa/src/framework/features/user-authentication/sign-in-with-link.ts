@@ -12,7 +12,7 @@ async function catchSignInWithLinkAttempt() {
     const signInLink = window.location.href;
     // try login if link is valid
     if (isSignInWithEmailLink(auth, signInLink)) {
-        console.debug("Sign in attempt detected...");
+        console.debug("Log in attempt detected...");
         const email = localStoreSignInEmail.get();
         if (!email) {
             // TODO: user signing in from different device, should confirm email to prevent session fixation attacks
