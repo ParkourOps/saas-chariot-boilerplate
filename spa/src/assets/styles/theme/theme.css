@@ -35,21 +35,23 @@
     --surface-950: 3 6 23;
 }
 
-/* Apply Tailwind CSS classes */
-:root * {
-    * {
-        @apply font-sans;
+/* Apply Tailwind CSS classes for global styling where applicable: */
+@layer primevue {
+    :root * {
+        * {
+            @apply font-sans;
+        
+            h1, h2, h3 {
+                @apply font-serif;
+            }
+        
+            p {
+                @apply font-mono;
+            }
     
-        h1, h2, h3 {
-            @apply font-serif;
+            svg {
+                @apply fill-surface-700 dark:fill-surface-0;
+            }
         }
-    
-        p {
-            @apply font-mono;
-        }
-
-        svg {
-            @apply fill-surface-700 dark:fill-surface-0;
-        }
-    }
+    }    
 }
