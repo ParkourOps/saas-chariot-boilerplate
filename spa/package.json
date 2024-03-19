@@ -28,6 +28,7 @@
     "@logtail/browser": "^0.4.21",
     "firebase": "^10.9.0",
     "pinia": "^2.1.7",
+    "posthog-js": "^1.116.2",
     "primevue": "^3.50.0",
     "uuid": "^9.0.1",
     "vue": "^3.4.21",
