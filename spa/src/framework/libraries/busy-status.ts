@@ -8,7 +8,7 @@ type PendingAction = {
 
 const uniqueIdGenerator = new UniqueIdGenerator("action");
 
-const useBusyStatus = defineStore("Busy", ()=>{
+const useBusyStatus = defineStore("Busy Status", ()=>{
     const pendingActions = ref<Array<PendingAction>>([]);
 
     function registerPendingAction() {
