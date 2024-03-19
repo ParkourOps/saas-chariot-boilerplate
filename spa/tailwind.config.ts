@@ -32,9 +32,9 @@ export default {
     },
     extend: {
       /* 
-        Theme Colours:
+        Theme Colors:
 
-        Theme colours are mapped to @/assets/style/theme/theme.css
+        Theme colors are mapped to @/assets/style/theme/theme.css
       */
       colors: {
         'primary-50': 'rgb(var(--primary-50))',
