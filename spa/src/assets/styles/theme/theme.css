@@ -8,7 +8,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme Colours */
+/* Theme Colors */
 :root {
     --primary-50: 237 245 249;
     --primary-100: 202 225 238;
