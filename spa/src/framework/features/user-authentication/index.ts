@@ -3,6 +3,7 @@ import signInWithLink from "./sign-in-with-link"
 import auth, {onAuthStateChanged, signOut as _signOut, type User} from "@/framework/libraries/_firebase_/auth";
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import signInWithThirdPartyAccount from "./sign-in-with-third-party-account";
 
 async function signOut() {
     console.debug("Logging out...");
@@ -31,7 +32,8 @@ export const useUserAuthentication = defineStore("User Authentication", ()=>{
     });
 
     return {
-        signInWithLink: signInWithLink,
+        signInWithLink,
+        signInWithThirdPartyAccount,
         signOut,
         activeUser
     }
