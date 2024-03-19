@@ -25,6 +25,7 @@
     "audit:bundle:network": "vite-bundle-visualizer -t network"
   },
   "dependencies": {
+    "@logtail/browser": "^0.4.21",
     "firebase": "^10.9.0",
     "pinia": "^2.1.7",
     "primevue": "^3.50.0",
