@@ -12,9 +12,9 @@ const logger = {
         const debugObj = {
             type: "debug@spa",
             id: debugIDGenerator.generate(),
-            createdAt: (new Date()).getTime(),
+            createdAt: new Date().getTime(),
             message,
-            details: details ?? {},
+            details: details ?? {}
         } satisfies ApplicationDebug;
         console.debug(message, debugObj);
         logtail.debug(message, debugObj);
@@ -39,8 +39,8 @@ const logger = {
                 type: _type,
                 stack: _stack,
                 code: _code,
-                customData: _customData,
-            }
+                customData: _customData
+            };
         }
         // prepend message if specified
         if (messagePrepend) {
@@ -50,16 +50,16 @@ const logger = {
         if (additionalDetails) {
             details = {
                 ...details,
-                ...additionalDetails,
-            }
+                ...additionalDetails
+            };
         }
         // produce errorObj
         const errorObj = {
             type: "error@spa",
             id: errorIDGenerator.generate(),
-            createdAt: (new Date()).getTime(),
+            createdAt: new Date().getTime(),
             message,
-            details: details ?? {},
+            details: details ?? {}
         } satisfies ApplicationError;
         // transmit error:
         console.error(message, errorObj);

@@ -1,22 +1,22 @@
-import { createApp } from "vue"
-import App from "./App.vue"
-const app = createApp(App)
+import { createApp } from "vue";
+import App from "./App.vue";
+const app = createApp(App);
 
 // State Store
-import { createPinia } from "pinia"
-app.use(createPinia())
+import { createPinia } from "pinia";
+app.use(createPinia());
 
 // Router
-import router from "./router"
-app.use(router)
+import router from "./router";
+app.use(router);
 
 // User Interface System
-import userInterface from "./framework/plugins/_user-interface_"
-app.use(userInterface)
+import userInterface from "./framework/plugins/_user-interface_";
+app.use(userInterface);
 
 // User Feedback and Analytics
-import userFeedbackAndAnalytics from "./framework/features/user-feedback-and-analytics/plugin"
+import userFeedbackAndAnalytics from "./framework/features/user-feedback-and-analytics/plugin";
 app.use(userFeedbackAndAnalytics);
 
 // Mount the Vue application to DOM...
-app.mount("#app")
+app.mount("#app");

@@ -1,6 +1,6 @@
-import app from "./app"
-import { getAnalytics } from "firebase/analytics"
+import app from "./app";
+import { getAnalytics } from "firebase/analytics";
 
-const analytics = getAnalytics(app)
+const analytics = getAnalytics(app);
 
-export default analytics
+export default analytics;

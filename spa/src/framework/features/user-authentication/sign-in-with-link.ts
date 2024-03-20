@@ -1,10 +1,10 @@
-import SendSignInLink from "@/_common_/features/user-authentication/api/SendSignInLink"
-import functionCallerFactory from "@/framework/libraries/function-caller-factory"
+import SendSignInLink from "@/_common_/features/user-authentication/api/SendSignInLink";
+import functionCallerFactory from "@/framework/libraries/function-caller-factory";
 import errors from "./types/errors";
 import getRouteUrl from "@/framework/utilities/get-route-url";
 import type { RouteLocationRaw } from "vue-router/auto";
-import localStoreSignInEmail from "./localStoreSignInEmail";;
-import {app, auth} from "../../libraries/_firebase_";
+import localStoreSignInEmail from "./localStoreSignInEmail";
+import { app, auth } from "../../libraries/_firebase_";
 
 async function catchSignInWithLinkAttempt() {
     // get address of current page as login link
@@ -18,7 +18,7 @@ async function catchSignInWithLinkAttempt() {
             throw errors.signInFromDifferentDeviceNotAllowed;
         }
         try {
-            await auth.signInWithEmailLink(auth.default, email, signInLink); 
+            await auth.signInWithEmailLink(auth.default, email, signInLink);
         } catch (e) {
             if (e instanceof app.FirebaseError && e.code === "auth/invalid-action-code") {
                 throw errors.signInLinkInvalid;
@@ -38,7 +38,7 @@ async function sendSignInLink(email: string, redirect: RouteLocationRaw) {
     // send the link
     await sendSignInLink({
         email,
-        redirectUrl,
+        redirectUrl
     });
 }
 
@@ -50,4 +50,4 @@ export default {
     sendSignInLink,
     catchSignInWithLinkAttempt,
     getSignInEmailFromPreviousSignInWithLinkAttempt
-}
+};

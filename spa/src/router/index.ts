@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router/auto"
+import { createRouter, createWebHistory } from "vue-router/auto";
 
 const router = createRouter({
     history: createWebHistory()
@@ -6,10 +6,10 @@ const router = createRouter({
 
 export default router;
 
-declare module 'vue-router' {
+declare module "vue-router" {
     interface RouteMeta {
         // must be declared by every route
-        showTopBar: boolean,
-        requiresAuth: boolean
+        showTopBar: boolean;
+        requiresAuth: boolean;
     }
 }
