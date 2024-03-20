@@ -25,7 +25,7 @@ export default {
             .directive('tooltip', Tooltip)
             .component("MandatoryComponents", MandatoryComponents)
 
-        console.debug("User interface installed.");
+        console.debug("User Interface installed.");
     }
 }
 
