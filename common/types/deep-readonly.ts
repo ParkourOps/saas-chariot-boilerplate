@@ -1,7 +1,7 @@
-import { AnyArray } from "./generic";
-import { Builtin } from "./generic";
-import { IsTuple } from "./generic";
-import { IsUnknown } from "./generic";
+import { type AnyArray } from "./generic";
+import { type Builtin } from "./generic";
+import { type IsTuple } from "./generic";
+import { type IsUnknown } from "./generic";
 
 export type DeepReadonly<Type> = Type extends Exclude<Builtin, Error>
   ? Type
