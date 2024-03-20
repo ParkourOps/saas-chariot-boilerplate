@@ -3,7 +3,7 @@
 interface ImportMetaEnv {
     // Site Title
     readonly VITE_DEFAULT_TITLE: string
-    // Firebase Config Variables
+    // Firebase Backend
     readonly VITE_FIREBASE_API_KEY: string
     readonly VITE_FIREBASE_AUTH_DOMAIN: string
     readonly VITE_FIREBASE_PROJECT_ID: string
@@ -14,6 +14,8 @@ interface ImportMetaEnv {
     readonly VITE_FIREBASE_USE_EMULATOR: string
     // Logging
     readonly VITE_BETTERSTACK_SOURCE_TOKEN: string
+    // User Feedback and Analytics
+    readonly VITE_POSTHOG_PROJECT_API_KEY: string
 }
 
 interface ImportMeta {
