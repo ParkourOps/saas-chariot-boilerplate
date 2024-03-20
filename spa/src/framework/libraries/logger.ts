@@ -2,17 +2,10 @@ import type { LogDetails, LogMessage } from "@/_common_/types/loggable";
 import type { ApplicationDebug, ApplicationError } from "../types";
 import { Logtail } from "@logtail/browser";
 import UniqueIDGenerator from "@/_common_/libraries/unique-id-generator";
-import { FirebaseError } from "firebase/app";
-import { custom, object } from "zod";
 const logtail = new Logtail(import.meta.env.VITE_BETTERSTACK_SOURCE_TOKEN);
 
 const debugIDGenerator = new UniqueIDGenerator("debug@spa");
 const errorIDGenerator = new UniqueIDGenerator("error@spa");
-
-type ErrorArgument = {
-    message: LogMessage,
-    details?: LogDetails
-} | Error
 
 const logger = {
     debug(message: LogMessage, details?: LogDetails) {
