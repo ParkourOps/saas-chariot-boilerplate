@@ -4,6 +4,9 @@ import {auth} from "../../libraries/_firebase_";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import signInWithThirdPartyAccount from "./sign-in-with-third-party-account";
+import errors from "./types/errors";
+
+export type User = auth.User;
 
 async function signOut() {
     console.debug("Logging out...");
@@ -13,7 +16,7 @@ async function signOut() {
 
 export const useUserAuthentication = defineStore("User Authentication", ()=>{
     // Tri-state: undefined is pending, null is no user; user present if logged in
-    const activeUser = ref<auth.User|null|undefined>(undefined);
+    const activeUser = ref<User|null|undefined>(undefined);
 
     // Listen on Firebase Auth's internal change and reflect in activeUser.
     const router = useRouter();
@@ -35,6 +38,6 @@ export const useUserAuthentication = defineStore("User Authentication", ()=>{
         signInWithLink,
         signInWithThirdPartyAccount,
         signOut,
-        activeUser
+        activeUser,
     }
 });

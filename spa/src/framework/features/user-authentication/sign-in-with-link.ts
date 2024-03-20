@@ -1,6 +1,6 @@
 import SendSignInLink from "@/_common_/features/user-authentication/api/SendSignInLink"
 import functionCallerFactory from "@/framework/libraries/function-caller-factory"
-import { errorSignInFromDifferentDeviceNotAllowed, errorSignInLinkInvalid } from "./types/errors";
+import errors from "./types/errors";
 import getRouteUrl from "@/framework/utilities/get-route-url";
 import type { RouteLocationRaw } from "vue-router/auto";
 import localStoreSignInEmail from "./localStoreSignInEmail";;
@@ -15,13 +15,13 @@ async function catchSignInWithLinkAttempt() {
         const email = localStoreSignInEmail.get();
         if (!email) {
             // TODO: user signing in from different device, should confirm email to prevent session fixation attacks
-            throw errorSignInFromDifferentDeviceNotAllowed;
+            throw errors.signInFromDifferentDeviceNotAllowed;
         }
         try {
             await auth.signInWithEmailLink(auth.default, email, signInLink); 
         } catch (e) {
             if (e instanceof app.FirebaseError && e.code === "auth/invalid-action-code") {
-                throw errorSignInLinkInvalid;
+                throw errors.signInLinkInvalid;
             } else {
                 throw e;
             }
