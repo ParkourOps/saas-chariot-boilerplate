@@ -25,7 +25,7 @@ class FunctionError<
     ) {
         this.type = `error@fncs:${prefix}` as const;
         const errorIDGenerator = new UniqueIDGenerator(this.type);
-        this.id = errorIDGenerator.generate();
+        this.id = errorIDGenerator.generateUniqueID();
         this.correlationID = correlationID;
         this.code = code;
         this.message = message;

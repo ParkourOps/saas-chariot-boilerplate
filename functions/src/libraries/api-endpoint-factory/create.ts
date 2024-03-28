@@ -30,7 +30,7 @@ export default function<
     CallResponseDataUnknownKeys extends UnknownKeysParam,
     CallResponseDataCatchAll extends ZodTypeAny,
 >(
-    specification: ReturnType<typeof ApiCallDeclarator.declare<
+    specification: ReturnType<typeof ApiCallDeclarator.declareAPICall<
         CallName,
         CallDescription,
         CallRequiresAuth,
@@ -69,7 +69,7 @@ export default function<
             >
         >(async (request) => {
             const generator = new UniqueIDGenerator(prefix);
-            const correlationId = generator.generate();
+            const correlationId = generator.generateUniqueID();
             const loggableRequest = (r: typeof request) => ({
                 auth: request.auth,
                 data: request.data

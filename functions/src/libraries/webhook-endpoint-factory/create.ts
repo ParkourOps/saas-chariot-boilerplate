@@ -12,7 +12,7 @@ export default function<
 ) {
     const prefix = `webhookEndpoint:${name}` as const;
     const uniqueIdGenerator = new UniqueIdGenerator(prefix);
-    const correlationId = uniqueIdGenerator.generate();
+    const correlationId = uniqueIdGenerator.generateUniqueID();
     return onRequest(async (request, response) => {
         try {
             await handler(correlationId, request);
