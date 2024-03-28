@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useUserAuthentication } from "@/framework/features/user-authentication";
+import auth from "@/framework/libraries/_firebase_/auth";
 import actor from "@/framework/libraries/actor";
 
-const userAuthentication = useUserAuthentication();
-
-const signOut = actor.act(userAuthentication.signOut);
+const signOut = actor.act(()=>auth.signOut());
 </script>
 
 <template>

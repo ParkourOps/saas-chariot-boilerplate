@@ -4,13 +4,14 @@ import errors from "./types/errors";
 import getRouteUrl from "@/framework/utilities/get-route-url";
 import type { RouteLocationRaw } from "vue-router/auto";
 import localStoreSignInEmail from "./localStoreSignInEmail";
-import { app, auth } from "../../libraries/_firebase_";
+import auth, {isSignInWithEmailLink, signInWithEmailLink} from "../../libraries/_firebase_/auth";
+import app, {FirebaseError} from "@/framework/libraries/_firebase_/app";
 
 async function catchSignInWithLinkAttempt() {
     // get address of current page as login link
     const signInLink = window.location.href;
     // try login if link is valid
-    if (auth.isSignInWithEmailLink(auth.default, signInLink)) {
+    if (isSignInWithEmailLink(auth, signInLink)) {
         console.debug("Log in attempt detected...");
         const email = localStoreSignInEmail.get();
         if (!email) {
@@ -18,9 +19,9 @@ async function catchSignInWithLinkAttempt() {
             throw errors.signInFromDifferentDeviceNotAllowed;
         }
         try {
-            await auth.signInWithEmailLink(auth.default, email, signInLink);
+            await signInWithEmailLink(auth, email, signInLink);
         } catch (e) {
-            if (e instanceof app.FirebaseError && e.code === "auth/invalid-action-code") {
+            if (e instanceof FirebaseError && e.code === "auth/invalid-action-code") {
                 throw errors.signInLinkInvalid;
             } else {
                 throw e;

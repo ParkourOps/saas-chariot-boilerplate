@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { EmailAddress } from "@/_common_/models";
-import { useUserAuthentication } from "@/framework/features/user-authentication";
+import { signInWithLink as _signInWithLink, signInWithThirdPartyAccount as _signInWithThirdPartyAccount} from "@/framework/features/user-authentication";
 import actor from "@/framework/libraries/actor";
 import Actor from "@/framework/libraries/actor";
 import handleErrorInUI from "@/framework/utilities/handle-error-in-ui";
 import { useToast } from "primevue/usetoast";
 import { onMounted, ref } from "vue";
-const userAuthentication = useUserAuthentication();
+
 const toast = useToast();
 
 definePage({
@@ -21,7 +21,7 @@ const emailAddressValid = ref<boolean>();
 
 const sendSignInLink = Actor.act(async () => {
     try {
-        await userAuthentication.signInWithLink.sendSignInLink(emailAddress.value ?? "", {
+        await _signInWithLink.sendSignInLink(emailAddress.value ?? "", {
             name: "/sign-in"
         });
         toast.add({
@@ -40,11 +40,11 @@ const sendSignInLink = Actor.act(async () => {
 });
 
 const signInWithThirdPartyAccount = (
-    provider: Parameters<typeof userAuthentication.signInWithThirdPartyAccount>[0]
+    provider: Parameters<typeof _signInWithThirdPartyAccount>[0]
 ) =>
     Actor.act(async () => {
         try {
-            await userAuthentication.signInWithThirdPartyAccount(provider);
+            await _signInWithThirdPartyAccount(provider);
         } catch (e) {
             handleErrorInUI(
                 toast,
@@ -60,7 +60,7 @@ onMounted(async () => {
         // attempt to catch sign in attempt
         async () => {
             try {
-                await userAuthentication.signInWithLink.catchSignInWithLinkAttempt();
+                await _signInWithLink.catchSignInWithLinkAttempt();
             } catch (e) {
                 handleErrorInUI(
                     toast,
@@ -73,7 +73,7 @@ onMounted(async () => {
         // use email stored from previous attempt if available
         () => {
             emailAddress.value =
-                userAuthentication.signInWithLink.getSignInEmailFromPreviousSignInWithLinkAttempt() ??
+                _signInWithLink.getSignInEmailFromPreviousSignInWithLinkAttempt() ??
                 undefined;
         }
     ])();

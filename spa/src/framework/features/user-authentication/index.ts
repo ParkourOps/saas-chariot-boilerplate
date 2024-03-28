@@ -1,17 +1,17 @@
 import localStoreSignInEmail from "./localStoreSignInEmail";
-import signInWithLink from "./sign-in-with-link";
-import { auth } from "../../libraries/_firebase_";
+import auth, {type User, onAuthStateChanged} from "../../libraries/_firebase_/auth";
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import signInWithThirdPartyAccount from "./sign-in-with-third-party-account";
 
-export type User = auth.User;
-
-async function signOut() {
+export async function signOut() {
     console.debug("Logging out...");
     localStoreSignInEmail.set();
-    await auth.signOut(auth.default);
+    await auth.signOut();
 }
+export {default as signInWithLink} from "./sign-in-with-link";
+export {default as signInWithThirdPartyAccount} from "./sign-in-with-third-party-account";
+export {default as signInWithPassword} from "./sign-in-with-password";
+export {type User} from "../../libraries/_firebase_/auth";
 
 export const useUserAuthentication = defineStore("User Authentication", () => {
     // Tri-state: undefined is pending, null is no user; user present if logged in
@@ -19,7 +19,7 @@ export const useUserAuthentication = defineStore("User Authentication", () => {
 
     // Listen on Firebase Auth's internal change and reflect in activeUser.
     const router = useRouter();
-    auth.onAuthStateChanged(auth.default, (user) => {
+    onAuthStateChanged(auth, (user) => {
         if (!user) {
             if (activeUser.value) {
                 console.debug("Logged out.");
@@ -34,9 +34,6 @@ export const useUserAuthentication = defineStore("User Authentication", () => {
     });
 
     return {
-        signInWithLink,
-        signInWithThirdPartyAccount,
-        signOut,
         activeUser
     };
 });
