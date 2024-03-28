@@ -16,6 +16,9 @@ interface ImportMetaEnv {
     readonly VITE_BETTERSTACK_SOURCE_TOKEN: string
     // User Feedback and Analytics
     readonly VITE_POSTHOG_PROJECT_API_KEY: string
+    // Test Account
+    readonly VITE_TEST_USER_EMAIL: string
+    readonly VITE_TEST_USER_PASSWORD: string
 }
 
 interface ImportMeta {
