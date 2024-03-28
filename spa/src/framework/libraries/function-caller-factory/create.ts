@@ -55,7 +55,7 @@ function create<
     CallResponseDataCatchAll extends ZodTypeAny
 >(
     apiCall: ReturnType<
-        typeof apiCallDeclarator.declare<
+        typeof apiCallDeclarator.declareAPICall<
             CallName,
             CallDescription,
             CallRequiresAuth,

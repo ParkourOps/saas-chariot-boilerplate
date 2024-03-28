@@ -12,7 +12,7 @@ const useBusyStatus = defineStore("Busy Status", () => {
     const pendingActions = ref<Array<PendingAction>>([]);
 
     function registerPendingAction() {
-        const id = uniqueIdGenerator.generate();
+        const id = uniqueIdGenerator.generateUniqueID();
         console.debug(`Doing: ${id}`);
         pendingActions.value.push({
             id

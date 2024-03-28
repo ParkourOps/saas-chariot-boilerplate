@@ -11,7 +11,7 @@ const logger = {
     debug(message: LogMessage, details?: LogDetails) {
         const debugObj = {
             type: "debug@spa",
-            id: debugIDGenerator.generate(),
+            id: debugIDGenerator.generateUniqueID(),
             createdAt: new Date().getTime(),
             message,
             details: details ?? {}
@@ -56,7 +56,7 @@ const logger = {
         // produce errorObj
         const errorObj = {
             type: "error@spa",
-            id: errorIDGenerator.generate(),
+            id: errorIDGenerator.generateUniqueID(),
             createdAt: new Date().getTime(),
             message,
             details: details ?? {}
