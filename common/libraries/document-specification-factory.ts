@@ -66,7 +66,7 @@ export class DocumentSpecification<
 }
 
 export default {
-    buildDocumentSpecification: <
+    createDocumentSpecification: <
         TypePrefix extends string,
         TypeName extends string,
         DataShape extends ZodRawShape,
