@@ -62,7 +62,7 @@ const logger = {
             details: details ?? {}
         } satisfies ApplicationError;
         // transmit error:
-        console.error(message, errorObj);
+        console.error(message, JSON.stringify(errorObj));
         logtail.error(message, errorObj);
         logtail.flush();
     }
