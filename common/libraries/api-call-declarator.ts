@@ -30,5 +30,5 @@ function declare<
 }
 
 export default {
-    declare,
+    declareAPICall: declare,
 };
