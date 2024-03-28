@@ -7,7 +7,7 @@ class UniqueIDGenerator<
     constructor(prefix: Prefix) {
         this.prefix = prefix;
     }
-    generate() {
+    generateUniqueID() {
         const uuid = uuidv4();
         return `${this.prefix as Prefix}:${uuid}` as `${Prefix}:${string}`;
     }
