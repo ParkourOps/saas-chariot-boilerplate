@@ -12,7 +12,7 @@
     "build:staging": "npm run type-check && npm run format:check && vite --mode staging build",
     "build:dev-s": "npm run type-check && npm run format:check && vite --mode dev-on-staging-backend build",
     "build:dev-e": "npm run type-check && npm run format:check && vite --mode dev-on-emulated-backend build",
-    "test:unit": "vitest",
+    "test:unit": "vitest --mode dev-on-emulated-backend",
     "test:e2e": "playwright test",
     "preview": "vite preview",
     "deploy": "firebase deploy --only hosting",
